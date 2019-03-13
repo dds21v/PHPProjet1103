@@ -16,7 +16,7 @@ class TrailingSlashMiddleware implements MiddlewareInterface
         // Déterminer le dernier caractère de l'url
         $lastCharacter = substr($url, -1);
         // Si le dernier caractère est un slash
-        if ($lastCharacter === '/') 
+        if ($lastCharacter === '/' && strlen($url) !== 1) 
             {
             // déterminer la nouvelle URL
             $newUrl = substr($url, 0, -1);
@@ -31,7 +31,7 @@ class TrailingSlashMiddleware implements MiddlewareInterface
             
 
 
-        var_dump($url);
+        // var_dump($url);
         die('On est dans TrailingSlash Middleware');
     }
 }
