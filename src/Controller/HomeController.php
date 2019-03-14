@@ -1,16 +1,34 @@
 <?php
 namespace Appli\Controller;
 
+use Generic\Controller\Controller;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Server\MiddlewareInterface;
 
-class HomeController implements MiddlewareInterface
+class HomeController extends Controller 
 {
     public function process (ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface 
     {
-        return new Response(200, [], '<h1>Bonjour Depuis HomeController</h1>');
+        $products = [
+            [
+                "id"=>1,
+                "name"=>"Hamac",
+                "description"=> "Pour se reposer"
+            ],
+            [
+                "id"=>2,
+                "name"=>"Parasol",
+                "description"=> "Pour faire de l'ombre"
+            ]
+
+        ];
+        return $this->render('home.twig', 
+            [
+            'products' => $products,
+            'title' => "Bonjour!"
+            ]);
     }
 }
