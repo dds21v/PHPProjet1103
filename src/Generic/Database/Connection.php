@@ -1,7 +1,5 @@
-
 <?php
-
-namespace src\Generic;
+namespace Generic\Database;
 
 // permet d'établir connexion avec bdd et de lancer requête sql
 
@@ -9,14 +7,11 @@ class Connection
 {
     private $pdo;
 
-    public function __construct()
+    public function __construct(string $databaseName, string $databaseUser, string $databasePass)
     {
         // info nécessaire
-        $dsn ='mysql:host=localhost;dbname=bdd_mysql_command';
-        $user= 'php_user_bdd';
-        $pass= 'ahNvIshqnkqPaindw';
-
-        $this->connect($dsn, $user, $pass);
+        $dsn ='mysql:host=localhost;dbname=bdd_mysql_command'.$databaseName;
+        $this->connect($dsn, $databaseUser, $databasePass);
     }
 
 

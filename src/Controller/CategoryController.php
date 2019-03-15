@@ -10,9 +10,10 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class HomeController extends Controller
+class CategoryController extends Controller
 {
 
+   
     private $connection;
 
     public function __construct(TwigRenderer $twig, Connection $connection)
@@ -23,7 +24,7 @@ class HomeController extends Controller
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $products = $this->connection->query("SELECT * FROM product");
-        return $this->render('home.twig', ['products' => $products, 'title' => "Bonjour!"]);
+        $category = $this->connection->query("SELECT * FROM category");
+        return $this->render('category.twig', ['category' => $category, 'title' => "Category_list"]);
     }
 }

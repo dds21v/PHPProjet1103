@@ -9,6 +9,7 @@ use Appli\Controller\HomeController;
 use Generic\Router\RouterMiddleware;
 use Appli\Controller\AboutController;
 use Appli\Controller\ContactController;
+use Appli\Controller\CategoryController;
 use Generic\Middlewares\TrailingSlashMiddleware;
 
 $rootDir = dirname(__DIR__);
@@ -34,6 +35,8 @@ $router->addRoute('/home', $container->get(HomeController::class), 'Homepage');
 $router->addRoute('/', $container->get(HomeController::class), 'HomepageSlash');
 $router->addRoute('/contact', $container->get(ContactController::class), 'Contact');
 $router->addRoute('/about', $container->get(AboutController::class), 'About');
+$router->addRoute('/category', $container->get(CategoryController::class), 'Category_list');
+
 
 
 
