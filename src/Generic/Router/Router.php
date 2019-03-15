@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Generic\Router;
 
@@ -27,7 +27,7 @@ class Router
      * @param string|null $name - Nom unique de la route
      */
 
-    public function addRoute(string $url,MiddlewareInterface $controller, ?string $name = null): void
+    public function addRoute(string $url, MiddlewareInterface $controller, ?string $name = null): void
     {
         // On crée un objet "Route" pour le passer au "vrai" routeur
         $route = new Route($url, $controller, null, $name);
@@ -38,7 +38,7 @@ class Router
     /**
      * Ajoute une route dnas le routeur
      * @param ServerRequestInterface $request
-     * @return null|MiddlewareInterface 
+     * @return null|MiddlewareInterface
      */
     public function match(ServerRequestInterface $request): ?MiddlewareInterface
     {
@@ -47,11 +47,10 @@ class Router
 
         $result = $this->routerVendor->match($request);
 
-        if($result->isSuccess())
-        {
+        if ($result->isSuccess()) {
             // J'ai une route
             $route = $result->getMatchedRoute()->getMiddleware();
-        }else{
+        } else {
             // j'ai pas de route => 404
             $route = null;
         }

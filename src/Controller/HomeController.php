@@ -8,9 +8,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Server\MiddlewareInterface;
 
-class HomeController extends Controller 
+class HomeController extends Controller
 {
-    public function process (ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface 
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $products = [
             [
@@ -25,10 +25,12 @@ class HomeController extends Controller
             ]
 
         ];
-        return $this->render('home.twig', 
+        return $this->render(
+            'home.twig',
             [
             'products' => $products,
             'title' => "Bonjour!"
-            ]);
+            ]
+        );
     }
 }

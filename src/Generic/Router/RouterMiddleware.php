@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Generic\Router;
 
 use GuzzleHttp\Psr7\Response;
@@ -25,20 +25,18 @@ class RouterMiddleware implements MiddlewareInterface
      * @return MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
-    {   
+    {
         // Récupération du routeur
         $routeur = new Router();
         // Récupération de l'éventuel contrôleur
         $controller = $this->router->match($request);
          // s'il y a un contrôleur => on appele sa méthode "process"
-        if(!is_null($controller))
-        {
+        if (!is_null($controller)) {
             $response = $controller->process($request, $handler);
         // S'il n'y a pas de contrôleur => on renvoit une page 404
-        }else{
+        } else {
             $response = new Response(404, [], "<h2>Page Introuvable</h2>");
         }
         return $response;
-    
     }
 }

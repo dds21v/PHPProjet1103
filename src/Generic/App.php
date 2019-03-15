@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Generic;
 
@@ -22,7 +22,7 @@ class App implements RequestHandlerInterface
         $this->middlewares = $middlewares;
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface 
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         // On récupère le middleware à appeller
         $middleware = $this->middlewares[$this->cptMiddleware];

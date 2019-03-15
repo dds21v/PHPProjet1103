@@ -23,7 +23,7 @@ abstract class Controller implements MiddlewareInterface
         $this->twig = $twig;
     }
 
-    /**Retourne l'HTML 
+    /**Retourne l'HTML
      *
      * @param  mixed $html
      *
@@ -33,6 +33,4 @@ abstract class Controller implements MiddlewareInterface
     {
         return new Response(200, [], $this->twig->render($view, $variables));
     }
-
-    
 }
